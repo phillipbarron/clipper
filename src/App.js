@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Clipper from './clipper';
 
 function App() {
+  const [playSound, setPlaySound] = useState(false);
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +20,10 @@ function App() {
         >
           Learn React
         </a>
+          <button className="btn btn-primary" onClick={() => setPlaySound(!playSound)}>{playSound ? 'stop' : 'start'}</button>
+        {playSound &&
+          <Clipper src="/correct.mp3" />
+        }
       </header>
     </div>
   );
